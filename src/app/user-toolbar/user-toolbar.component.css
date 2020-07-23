@@ -1,0 +1,24 @@
+.mat-tab-label {
+    width: 50%;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+}
+
+.mat-tab-body {
+    margin: 0 auto;
+    height: 600px;
+}
+
+table {
+    width: 100%;
+}
+
+.addButton {
+    position: fixed;
+    bottom: 0px;
+    right: 90%;
+    height: 30px;
+    z-index: 99;
+    margin: 3%;
+}

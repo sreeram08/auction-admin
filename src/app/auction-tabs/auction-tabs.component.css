@@ -1,0 +1,57 @@
+.mat-tab-label {
+    color: black;
+    width: 50%;
+    display: flex;
+    font-weight: bold;
+    justify-content:center;
+}
+
+.mat-tab-body {
+    margin: 0 auto;
+    height: 600px;
+}
+
+.addButton {
+    bottom: 0px;
+    right: 90%;
+    height: 30px;
+    z-index: 99;
+    margin: 3%;
+}
+
+.mat-list-icon {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.example-card {
+    display: flex;
+    margin: 2% 15%;
+    cursor: pointer;
+}
+
+.image {
+    max-height: 200px;
+}
+
+.mat-card-title {
+    font-size: 3em !important;
+    font-family: serif;
+}
+    
+
+.timer {
+    display: flex;
+    /* right: 0; */
+    font-size: 2em;
+    justify-content: flex-end;
+    margin: 0 10%;
+}
+
+.addButton {
+    position: fixed;
+    bottom: 0px;
+    right: 90%;
+    height: 30px;
+    z-index: 99;
+    margin: 3%;
+}

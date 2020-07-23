@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Create Auction</h1>
+<div mat-dialog-content>
+    <div class="example-container">
+
+
+        <input placeholder="Upload Image" type="file" name="file" (change)="selectFile($event)">
+
+        <mat-form-field>
+            <input matInput placeholder="Hosted By" value="Conferro Heritae" [(ngModel)]="data.hosted_by">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="data.name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <textarea matInput placeholder="Description" [(ngModel)]="data.description"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="picker1" [min]="minDate" placeholder="Start at"
+                [disabled]="disabled" [(ngModel)]="data.live_at">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker1 [touchUi]="true">
+            </ngx-mat-datetime-picker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="picker2" placeholder="End at" [disabled]="disabled"
+                [(ngModel)]="data.end_at">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker2>
+            </ngx-mat-datetime-picker>
+        </mat-form-field>
+    </div>
+
+    {{data.from_to}}
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
