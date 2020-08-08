@@ -34,6 +34,8 @@ import {
   NgxMatNativeDateModule,
   NgxMatTimepickerModule
 } from '@angular-material-components/datetime-picker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
@@ -41,19 +43,33 @@ import { LoginComponent } from './login/login.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserToolbarComponent } from './user-toolbar/user-toolbar.component';
-import { UsersListComponent } from './users-list/users-list.component';
 import { AuctionTabsComponent } from './auction-tabs/auction-tabs.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { SocketService } from './services/socket.service';
 import { AddAuctionModalComponent } from './add-auction-modal/add-auction-modal.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { LotsComponent } from './lots/lots.component';
+import { AddLotComponent } from './add-lot/add-lot.component';
+import { AuctionDetailComponent } from './auction-detail/auction-detail.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AuctionUsersComponent } from './auction-users/auction-users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserToolbarComponent,
-    UsersListComponent,
     AuctionTabsComponent,
-    AddAuctionModalComponent
+    AddAuctionModalComponent,
+    AddUserComponent,
+    LotsComponent,
+    AddLotComponent,
+    AuctionDetailComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    AuctionUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +95,11 @@ import { AddAuctionModalComponent } from './add-auction-modal/add-auction-modal.
     OwlNativeDateTimeModule,
     NgxMatTimepickerModule,
     NgxMatDatetimePickerModule,
-    NgxMatNativeDateModule
+    NgxMatNativeDateModule,
+    MatRadioModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MDBBootstrapModule.forRoot()
   ],
   entryComponents: [AddAuctionModalComponent],
   providers: [SocketService],

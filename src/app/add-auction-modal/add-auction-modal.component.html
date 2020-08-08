@@ -1,43 +1,52 @@
-<h1 mat-dialog-title>Create Auction</h1>
+<h1 mat-dialog-title>{{data.type}} Auction</h1>
 <div mat-dialog-content>
-    <div class="example-container">
+    <form #addAuctionForm="ngForm">
+        <div class="example-container">
+            <img *ngIf="url" [src]="url" height="200"> <br />
+            <button mat-raised-button color="primary" type="button" (click)="fileInput.click()"
+                style=" width:40%; margin: auto;">
+                Upload
+                <input #fileInput type="file" name="file" (change)="onSelectFile($event)" style="display:none;"
+                    required />
+            </button>
+            <mat-form-field>
+                <input matInput name="hosted_by" placeholder="Hosted By" value="Conferro Heritae"
+                    [(ngModel)]="data.hosted_by" required>
+            </mat-form-field>
 
+            <mat-form-field>
+                <input matInput name="name" placeholder="Name" [(ngModel)]="data.name" required>
+            </mat-form-field>
 
-        <input placeholder="Upload Image" type="file" name="file" (change)="selectFile($event)">
+            <mat-form-field>
+                <textarea matInput name="description" placeholder="Description" [(ngModel)]="data.description"
+                    required></textarea>
+            </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Hosted By" value="Conferro Heritae" [(ngModel)]="data.hosted_by">
-        </mat-form-field>
+            <mat-form-field>
+                <input matInput name="start_at" [ngxMatDatetimePicker]="picker1" (focus)="picker1.open()" [min]="minDate" placeholder="Start at"
+                    [disabled]="disabled" [(ngModel)]="data.live_at" (click)="startAt.click()" autocomplete="off" required>
+                <mat-datepicker-toggle #startAt matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker1>
+                </ngx-mat-datetime-picker>
+            </mat-form-field>
 
-        <mat-form-field>
-            <input matInput placeholder="Name" [(ngModel)]="data.name">
-        </mat-form-field>
+            <mat-form-field>
+                <input matInput name="end_at" [ngxMatDatetimePicker]="picker2" (focus)="picker2.open()" [min]="minDate" placeholder="End at"
+                    [disabled]="disabled" [(ngModel)]="data.end_at" autocomplete="off" required>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker2>
+                </ngx-mat-datetime-picker>
+            </mat-form-field>
+        </div>
+    </form>
 
-        <mat-form-field>
-            <textarea matInput placeholder="Description" [(ngModel)]="data.description"></textarea>
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput [ngxMatDatetimePicker]="picker1" [min]="minDate" placeholder="Start at"
-                [disabled]="disabled" [(ngModel)]="data.live_at">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <ngx-mat-datetime-picker #picker1 [touchUi]="true">
-            </ngx-mat-datetime-picker>
-        </mat-form-field>
-
-        <mat-form-field>
-            <input matInput [ngxMatDatetimePicker]="picker2" placeholder="End at" [disabled]="disabled"
-                [(ngModel)]="data.end_at">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <ngx-mat-datetime-picker #picker2>
-            </ngx-mat-datetime-picker>
-        </mat-form-field>
-    </div>
-
-    {{data.from_to}}
+    <!-- {{addAuctionForm.form.}} -->
 
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+    <button mat-button
+        [disabled]="!data.description || !data.image_url || !data.name || !data.hosted_by || !data.live_at || !data.end_at"
+        [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>

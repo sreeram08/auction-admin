@@ -1,0 +1,142 @@
+.mat-tab-label {
+    color: black;
+    width: 50%;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+}
+
+mat-card {
+    margin: 2%;
+}
+
+.mat-tab-body {
+    margin: 0;
+    min-height: 100%;
+}
+
+.mat-list-icon {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.list-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex: center;
+}
+
+.example-card {
+    max-height: 20%;
+    max-width: 350px;
+    /* display: flex; */
+    margin: 20px 20px;
+    float: left;
+    border: thin;
+    justify-content: center;
+}
+
+.image {
+    max-width: 400px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.mat-card-title {
+    /* font-size: 3em !important;    */
+    font-family: serif;
+}
+
+.example-title {
+    display: inline;
+}
+
+.timer {
+    display: flex;
+    width: 50px;
+    /* right: 0; */
+    font-size: 2em;
+    justify-content: flex-end;
+    margin: auto;
+}
+
+.addButton {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    display: flex;
+    flex: flex-end;
+    /* height: 30px; */
+    z-index: 99;
+    /* margin: 3%; */
+}
+
+.card-selection {
+    border: none;
+    cursor: pointer;
+}
+
+.description {
+    white-space: nowrap;
+    max-width: 70vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.not-found {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.not-found-img {
+    width: 100vw;
+    height: 79vh;
+}
+
+.card-actions-btn {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    background-color: #ededed;
+}
+
+.lot-id {
+    margin: 2% 0;
+}
+
+.lot-name {
+    margin: 8%;
+}
+
+.timer {
+    display: flex;
+    /* width: 50px; */
+    /* right: 0; */
+    font-size: 2em;
+    justify-content: space-around;
+    margin: auto;
+}
+
+.addButton {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    display: flex;
+    flex: flex-end;
+    /* height: 30px; */
+    z-index: 99;
+    /* margin: 3%; */
+}
+
+.addButton:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 0;
+}
+
+@media only screen and (min-width :500px) {
+    .example-card {
+        margin: 2% 8%;
+        justify-content: center;
+        margin: 2% auto;
+    }
+}

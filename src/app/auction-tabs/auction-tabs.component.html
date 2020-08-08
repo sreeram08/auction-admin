@@ -1,49 +1,82 @@
-<mat-tab-group [(selectedIndex)]="selectedIndex">
+<mat-tab-group [(selectedIndex)]="selectedIndex" mat-stretch-tabs>
     <mat-tab label="Past Actions">
-        <mat-list class="list">
-            <div *ngFor="let auction of pastAuctions">
-                <mat-card class="example-card">
-                    <img mat-card-image src={{auction.image_url}} class="image" alt="Auction poster">
-                    <mat-card-header>
-                        <!-- <div mat-card-avatar class="example-header-image"></div> -->
-                        <mat-card-title class="example-title">{{auction.name}}</mat-card-title>
-                        <mat-card-subtitle>{{auction.hosted_by}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <div class="timer">
-                        <div simpleCountdown dateTo={{auction.end_at}} [language]="'en'" [endMessage]="'Auction Closed'"
-                            [styles]="
+        <!-- <mat-list class="list"> -->
+        <div class="list-container">
+            <div *ngIf="!pastAuctions.length" class="not-found">
+                <img class="not-found-img" src="../assets/No Data Found.svg" alt="No Data Found">
+            </div>
+            <mat-card class="example-card" *ngFor="let auction of pastAuctions; let i = index;">
+                <!-- <div class="card-selection" [routerLink]="['/auction', auction.id]"> -->
+                <img mat-card-image src={{auction.image_url}} class="image" alt="Auction poster">
+                <mat-card-header>
+                    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+                    <mat-card-title class="example-title">{{auction.name}}</mat-card-title>
+                    <mat-card-subtitle>{{auction.hosted_by}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="description">
+                        {{auction.description}}
+                    </p>
+                </mat-card-content>
+                <!-- </div> -->
+
+                <mat-card-actions style="display: flex;">
+                    <button class="card-actions-btn" mat-button>Archive</button>
+                    <button class="card-actions-btn" mat-button
+                        (click)="editAuctionDialog(auction, 'past', i)">Edit</button>
+                    <button class="card-actions-btn" mat-button [routerLink]="['/auction/details', auction.id, 'lots']">More</button>
+                </mat-card-actions>
+                <div class="timer">
+                    <div simpleCountdown [dateTo]="trimDate(auction.end_at)" [language]="'en'"
+                        [endMessage]="'Auction Closed'" [styles]="
                       '
-                      font-size: 0.5em;      
+                      font-size: 15px;
                       text-align:center;
                       color: #FFF;
                       background-color: black;
-                      padding: 10% 8%;
+                      padding: 10% 0%;
                       font-weight: bold;
-                      min-width:30px;
+                      min-width:70px;
                       margin:0 1px;
                     '
                     "></div>
-                    </div>
-                    <div class="flex"></div>
-                </mat-card>
-                <mat-divider></mat-divider>
-            </div>
-        </mat-list>
+                </div>
+                <div class="flex"></div>
+            </mat-card>
+            <!-- <mat-divider></mat-divider> -->
+        </div>
+        <!-- </mat-list> -->
     </mat-tab>
-    <mat-tab label="Current Auctions" focus>
-        <mat-list class="list">
-            <mat-card class="example-card" *ngFor="let auction of currentAuctions" (click)="openLots(auction.id)">
+    <mat-tab label="Current Auctions">
+        <div class="list-container">
+            <div *ngIf="!currentAuctions.length" class="not-found">
+                <img class="not-found-img" src="../assets/No Data Found.svg" alt="No Data Found">
+            </div>
+            <mat-card class="example-card" *ngFor="let auction of currentAuctions;  let i = index;">
+                <!-- <div class="card-selection" [routerLink]="['/auction', auction.id]"> -->
                 <img mat-card-image src={{auction.image_url}} class="image" alt="auction poster">
                 <mat-card-header>
                     <!-- <div mat-card-avatar class="example-header-image"></div> -->
                     <mat-card-title class="example-title">{{auction.name}}</mat-card-title>
                     <mat-card-subtitle>{{auction.hosted_by}}</mat-card-subtitle>
                 </mat-card-header>
+                <mat-card-content>
+                    <p class="description">
+                        {{auction.description}}
+                    </p>
+                </mat-card-content>
+                <!-- </div> -->
+                <mat-card-actions style="display: flex;">
+                    <button class="card-actions-btn" mat-button>Archive</button>
+                    <button class="card-actions-btn" mat-button
+                        (click)="editAuctionDialog(auction, 'current', i)">Edit</button>
+                    <button class="card-actions-btn" mat-button [routerLink]="['/auction/details']">More</button>
+                </mat-card-actions>
                 <div class="timer">
-                    <div simpleCountdown dateTo={{auction.end_at}} [language]="'en'" [endMessage]="'Auction Closed'"
-                        [styles]="
+                    <div simpleCountdown [dateTo]="trimDate(auction.end_at)" [language]="'en'"
+                        [endMessage]="'Auction Closed'" [styles]="
                       '
-                      font-size: 0.5em;      
+                      font-size: 15px;
                       text-align:center;
                       color: #FFF;
                       background-color: black;
@@ -57,18 +90,35 @@
                 <div class="flex"></div>
 
             </mat-card>
-        </mat-list>
+        </div>
 
     </mat-tab>
     <mat-tab label="Upcoming Auctions">
-        <mat-list class="list">
-            <mat-card class="example-card" *ngFor="let auction of upcomingAuctions">
+        <!-- <mat-list class="list"> -->
+        <div class="list-container">
+            <div *ngIf="!upcomingAuctions.length" class="not-found">
+                <img class="not-found-img" src="../assets/No Data Found.svg" alt="No Data Found">
+            </div>
+            <mat-card class="example-card" *ngFor="let auction of upcomingAuctions;  let i = index;">
+                <!-- <div class="card-selection" [routerLink]="['/auction', auction.id]"> -->
                 <img mat-card-image src={{auction.image_url}} class="image" alt="auction poster">
                 <mat-card-header>
                     <!-- <div mat-card-avatar class="example-header-image"></div> -->
                     <mat-card-title class="example-title">{{auction.name}}</mat-card-title>
                     <mat-card-subtitle>{{auction.hosted_by}}</mat-card-subtitle>
                 </mat-card-header>
+                <mat-card-content>
+                    <p class="description">
+                        {{auction.description}}
+                    </p>
+                </mat-card-content>
+                <!-- </div> -->
+                <mat-card-actions style="display: flex;">
+                    <button class="card-actions-btn" mat-button>Archive</button>
+                    <button class="card-actions-btn" mat-button
+                        (click)="editAuctionDialog(auction, 'upcoming', i)">Edit</button>
+                    <button class="card-actions-btn" mat-button [routerLink]="['/auction', auction.id]">More</button>
+                </mat-card-actions>
                 <!-- <div class="timer">
                     <div
                     <div simpleCountdown dateTo={{auction.live_at}} [language]="'en'" [endMessage]="'Auction Closed'"
@@ -87,11 +137,13 @@
                 </div> -->
                 <div class="flex"></div>
             </mat-card>
-        </mat-list>
+            <!-- </mat-list -->
+        </div>
     </mat-tab>
 </mat-tab-group>
 <div class="addButton">
-    <button mat-mini-fab color="primary" aria-label="Example icon-button with a heart icon" (click)="openDialog()">
+    <button mat-mini-fab color="primary" aria-label="Example icon-button with a heart icon"
+        (click)="createAuctionDialog()">
         <mat-icon>add</mat-icon>
     </button>
 </div>

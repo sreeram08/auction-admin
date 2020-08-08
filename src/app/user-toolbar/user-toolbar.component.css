@@ -16,9 +16,15 @@ table {
 
 .addButton {
     position: fixed;
-    bottom: 0px;
-    right: 90%;
-    height: 30px;
+    bottom: 22px;
+    right: 22px;
+    display: flex;
+    flex: flex-end;
+    /* height: 30px; */
     z-index: 99;
-    margin: 3%;
+    /* margin: 3%; */
 }
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }

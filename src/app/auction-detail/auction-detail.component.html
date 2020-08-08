@@ -1,0 +1,67 @@
+<main>
+  <mat-card>
+    <div class="row no-gutters">
+      <!-- <div class="col-md-4"> -->
+        <img src={{auction.image_url}} class="image " alt="">
+      <!-- </div> -->
+      <div class="col-md-8 ">
+        <div class="row p-1">
+          <div class="col example-container">
+            <mat-card-title>{{auction.name}}</mat-card-title>
+            <mat-card-subtitle>{{auction.hosted_by}}</mat-card-subtitle>
+          </div>
+          <div class="col timer">
+            <div simpleCountdown [dateTo]="1600626600" [language]="'en'" [endMessage]="'Auction Closed'" [styles]="
+              '
+              display: flex;
+              justify-content:space-around;
+              font-size: 15px;
+              text-align:center;
+              color: #FFF;
+              background-color: black;
+              padding: 5% 5%;
+              font-weight: bold;
+              min-width:50px;
+              margin:0 2px;
+            '
+            "></div>
+          </div>
+        </div>
+
+
+        <div class="row p-2">
+          <div class="col ">
+            <mat-card-content>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et
+                dictum
+                interdum, nisi lorem egestas vitae scel <span id="dots">...</span><span id="more">erisque enim ligula
+                  venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus
+                  vestibulum
+                  augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc
+                  venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer
+                  fringilla
+                  congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta</span>
+              </p>
+              <button mat-button (click)="ellipsesFunc()" id="myBtn">Read less</button>
+            </mat-card-content>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</main>
+<mat-toolbar>
+  <span class="example-spacer"></span>
+  <button [routerLink]="['/auction/details',auctionId, 'lots']" routerLinkActive="active-link" mat-button
+    class="example-icon">
+    Lots Management
+  </button>
+  <span class="example-spacer"></span>
+
+  <button [routerLink]="['/auction/details',auctionId, 'users']" routerLinkActive="active-link" mat-button
+    class="example-icon">
+    User Management
+  </button>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<router-outlet></router-outlet>

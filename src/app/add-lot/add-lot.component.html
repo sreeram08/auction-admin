@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>{{data.type}} Auction</h1>
+<div mat-dialog-content>
+    <form #addAuctionForm="ngForm">
+        <div class="example-container">
+            <img *ngIf="url" [src]="url" height="200"> <br />
+            <button mat-raised-button color="primary" type="button" (click)="fileInput.click()"
+                style=" width:40%; margin: auto;">
+                Upload
+                <input #fileInput type="file" name="file" (change)="onSelectFile($event)" style="display:none;"
+                    required />
+            </button>
+
+            <mat-form-field>
+                <input matInput name="name" placeholder="Name" [(ngModel)]="data.name" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput name="description" placeholder="Description" [(ngModel)]="data.description"
+                    required></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="number" matInput name="min_estimate" (change)="comparePrice()" placeholder="Min-Estimate"
+                    [(ngModel)]="data.min_estimate" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input type="number" matInput name="max-estimate" (change)="comparePrice()" placeholder="Max-Estimate"
+                    [(ngModel)]="data.max_estimate" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="number" matInput name="max-estimate" placeholder="Min-Bid-Amount"
+                    [(ngModel)]="data.min_bid_amount" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput name="start_at" [ngxMatDatetimePicker]="picker1" [min]="minDate" placeholder="Start at"
+                    [disabled]="disabled" [(ngModel)]="data.start_at" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker1>
+                </ngx-mat-datetime-picker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput name="end_at" [ngxMatDatetimePicker]="picker2" [min]="minDate" placeholder="End at"
+                    [disabled]="disabled" [(ngModel)]="data.end_at" required>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <ngx-mat-datetime-picker #picker2>
+                </ngx-mat-datetime-picker>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <!-- {{addAuctionForm.form.}} -->
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button
+        [disabled]="!data.description || !data.image_url || !data.name || !data.min_estimate || !data.max_estimate || !data.end_at || !data.start_at || !comparePrice()"
+        [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

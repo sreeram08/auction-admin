@@ -1,15 +1,28 @@
 <mat-toolbar>
-    <span>My App</span>
+    <span class="title">Conferro Heritae</span>
     <span class="example-spacer"></span>
     <button *ngIf="show" [routerLink]="['/users']" routerLinkActive="active-link" mat-button
         class="example-icon">Users</button>
     <button *ngIf="show" [routerLink]="['/auctions']" routerLinkActive="active-link" mat-button
         class="example-icon">Auctions</button>
-    <div class="example-button-container">
-        <button *ngIf="show" (click)="logout()" mat-mini-fab color="accent"
+    <div class="example-icon">
+        <button class="logout-btn" *ngIf="show" (click)="logout()" mat-button color="accent"
             aria-label="Example icon button with a bookmark icon">
-            <mat-icon>person</mat-icon>
+            <!-- <mat-icon>person</mat-icon> -->
+            Logout
         </button>
+    </div>
+    <div class="example-button-container-md">
+        <button *ngIf="show" mat-button color="accent" aria-label="Example icon button with a bookmark icon"
+            [matMenuTriggerFor]="beforeMenu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button *ngIf="show" [routerLink]="['/users']" routerLinkActive="active-link" mat-menu-item>Users</button>
+            <button *ngIf="show" [routerLink]="['/auctions']" routerLinkActive="active-link"
+                mat-menu-item>Auctions</button>
+            <button *ngIf="show" class="logout-btn" routerLinkActive="active-link" mat-menu-item>Logout</button>
+        </mat-menu>
     </div>
 </mat-toolbar>
 

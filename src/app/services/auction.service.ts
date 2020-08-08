@@ -17,4 +17,12 @@ export class AuctionService {
   public createAuction(data): Observable<any> {
     return this._http.post(env.base_url + "/auction", data)
   }
+
+  public editAuction(data): Observable<any> {
+    return this._http.put(env.base_url + "/auction", data)
+  }
+
+  public fetchAuctionById(data): Observable<any> {
+    return this._http.get(env.base_url + "/auction/" + data)
+  }
 }

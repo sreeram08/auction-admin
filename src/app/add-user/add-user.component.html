@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Create User</h1>
+<div mat-dialog-content>
+    <form #addUserForm="ngForm">
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput placeholder="First Name" name="first_name" [(ngModel)]="data.first_name" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Last Name" name="last_name" [(ngModel)]="data.last_name" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="data.email" email="true"
+                    required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="number" placeholder="Phone" name="phone" [(ngModel)]="data.phone">
+            </mat-form-field>
+            <span>{{data.role}}</span>
+            <!-- <mat-form-field> -->
+            <mat-radio-group name="role" [(ngModel)]="data.role">
+                <mat-radio-button class="example-radio-button" value="2">
+                    Admin
+                </mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="3">
+                    Customer
+                </mat-radio-button>
+            </mat-radio-group>
+
+            <!-- </mat-form-field> -->
+        </div>
+    </form>
+
+    <p class="note"><b>NOTE: </b>Users password will be sent to registered email address</p>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" [disabled]="!addUserForm.form.valid" cdkFocusInitial>Ok</button>
+</div>

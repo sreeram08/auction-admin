@@ -15,4 +15,13 @@ export class UserService {
   public fetchUsers(): Observable<any> {
     return this._http.get(env.base_url + "/users")
   }
+  public createUser(data): Observable<any> {
+    return this._http.post(env.base_url + "/users/create", data)
+  }
+  public forgotPassword(data): Observable<any> {
+    return this._http.post(env.base_url + "/users/forgot-password", data)
+  }
+  public resetPassword(data): Observable<any> {
+    return this._http.post(env.base_url + "/users/reset-password", data)
+  }
 }

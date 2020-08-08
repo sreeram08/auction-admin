@@ -10,7 +10,7 @@ export class CompGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) { };
   canActivate() {
     if (localStorage.getItem('token')) {
-      console.log("FAILED AT GAURDE", false)
+      // console.log("FAILED AT GAURDE", false)
       this.userService.isLoggedIn.next(true)
       return true
     }
