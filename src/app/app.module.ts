@@ -55,6 +55,9 @@ import { AuctionDetailComponent } from './auction-detail/auction-detail.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuctionUsersComponent } from './auction-users/auction-users.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RequestsModalComponent } from './requests-modal/requests-modal.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,8 @@ import { AuctionUsersComponent } from './auction-users/auction-users.component';
     AuctionDetailComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    AuctionUsersComponent
+    AuctionUsersComponent,
+    RequestsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +103,8 @@ import { AuctionUsersComponent } from './auction-users/auction-users.component';
     MatRadioModule,
     MatSnackBarModule,
     MatGridListModule,
-    MDBBootstrapModule.forRoot()
+    MatBadgeModule,
+    MatTooltipModule
   ],
   entryComponents: [AddAuctionModalComponent],
   providers: [SocketService],

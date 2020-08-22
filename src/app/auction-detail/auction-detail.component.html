@@ -1,9 +1,9 @@
 <main>
   <mat-card>
     <div class="row no-gutters">
-      <!-- <div class="col-md-4"> -->
-        <img src={{auction.image_url}} class="image " alt="">
-      <!-- </div> -->
+      <div class="col-md-4">
+        <img src={{auction.image_url}} style="width: 100%; height: 100%;" alt="">
+      </div>
       <div class="col-md-8 ">
         <div class="row p-1">
           <div class="col example-container">
@@ -11,7 +11,8 @@
             <mat-card-subtitle>{{auction.hosted_by}}</mat-card-subtitle>
           </div>
           <div class="col timer">
-            <div simpleCountdown [dateTo]="1600626600" [language]="'en'" [endMessage]="'Auction Closed'" [styles]="
+            <div simpleCountdown [dateTo]="trimDate(auction.end_at)" [language]="'en'" [endMessage]="'Auction Closed'"
+              [styles]="
               '
               display: flex;
               justify-content:space-around;
@@ -42,7 +43,7 @@
                   fringilla
                   congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta</span>
               </p>
-              <button mat-button (click)="ellipsesFunc()" id="myBtn">Read less</button>
+              <button mat-button (click)="ellipsesFunc()" id="myBtn">Read more</button>
             </mat-card-content>
           </div>
         </div>

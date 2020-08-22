@@ -49,7 +49,9 @@ mat-card {
 .example-title {
     display: inline;
 }
-
+mat-form-field {
+    max-width: 40%;
+  }
 .timer {
     display: flex;
     width: 50px;

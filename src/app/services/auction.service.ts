@@ -25,4 +25,8 @@ export class AuctionService {
   public fetchAuctionById(data): Observable<any> {
     return this._http.get(env.base_url + "/auction/" + data)
   }
+
+  public fetchUsersInAuction(auctionId): Observable<any> {
+    return this._http.get(env.base_url + "/auction/users/" + auctionId)
+  }
 }

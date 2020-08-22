@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { AuctionService } from '../services/auction.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-auction-detail',
@@ -11,7 +12,7 @@ import { AuctionService } from '../services/auction.service';
 export class AuctionDetailComponent implements OnInit {
   public auctionId;
   public auction;
-  constructor(public router: Router, public activatedRouter: ActivatedRoute, private auctionService: AuctionService) { }
+  constructor(public router: Router, public activatedRouter: ActivatedRoute, private auctionService: AuctionService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.auctionId = this.activatedRouter.snapshot.params['auctionId']
@@ -38,5 +39,13 @@ export class AuctionDetailComponent implements OnInit {
       btnText.innerHTML = "Read less";
       moreText.style.display = "inline";
     }
+  }
+  trimDate(unixTime) {
+    return unixTime / 1000
+  }
+  openSnackBar(message: string) {
+    this._snackBar.open(message, "Close", {
+      duration: 5000,
+    });
   }
 }

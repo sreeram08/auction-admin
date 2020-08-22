@@ -5,6 +5,13 @@
     justify-content: center;
 }
 
+.example-container {
+    height: 400px;
+    width: 1365px;
+    max-width: 100%;
+    overflow: auto;
+  }
+  
 .mat-tab-body {
     margin: 0 auto;
     height: 600px;

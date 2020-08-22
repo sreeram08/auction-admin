@@ -1,48 +1,52 @@
 <main>
-    <mat-card class="card" *ngFor="let lot of lotsList; let i = index">
+    <mat-card class="card" *ngFor="let lot of lotsList">
         <div class="row no-gutters">
-            <!-- <div class="col-md-4"> -->
-            <img mat-card-image src="{{lot.image_url}}" class="img-fluid image" alt="">
-            <!-- </div> -->
-            <div class="col-md-8 ">
-                <div class="row p-2">
-                    <div class="col-md-4 example-container">
-                        <mat-card-title class="lot-id">LOT-{{lot.id}}</mat-card-title>
-                        <mat-card-title class="lot-name">{{lot.name}}</mat-card-title>
-                    </div>
-                    <div class="col-md-5 offset-md-2" style="background-color: #c3c3c3; padding: 6%;">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span>Max-Estimation: </span><span>INR {{lot.max_estimate}}</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span>Min-Estimation: </span><span>INR {{lot.min_estimate}}</span>
-                            </div>
-                        </div>
+            <div class="col-md-4">
+                <img class="image" src={{lot.image_url}} style="width: 100%; height: 100%;" alt="">
+            </div>
+            <!-- <div class="col-md-8 "> -->
+            <!-- <div class="row p-2"> -->
+            <!-- <div class="col-sm-1">
+  
+                  </div> -->
+
+            <div class="col-md-3" style="margin: 10px;">
+                <mat-card-title class="lot-id">LOT-{{lot.id}}</mat-card-title><br>
+                <mat-card-title class="lot-name">{{lot.name}}</mat-card-title><br>
+                <mat-form-field>
+                    <input name="amount" type="number" matInput placeholder="Amount" min="0" value="{{lot.latest_bid + lot.min_bid_amount}}">
+                </mat-form-field>
+                <span>Next Bid : {{lot.latest_bid + lot.min_bid_amount}}</span><br>
+                <button mat-raised-button color="primary">Place Bid</button><br>
+            </div>
+            <div class="col-md-1">
+                <button mat-icon-button color="warn" style="float: right; margin-right: 15px;">
+                    <mat-icon>history</mat-icon>
+                </button>
+            </div>
+
+            <div class="col-md-3" style="background-color: #c3c3c3; width: 600px; padding: 4%;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Max-Estimation: </span><span>INR {{lot.max_estimate}}</span>
                     </div>
                 </div>
-                <div class="row p-0 mt-1">
-                    <div class="col-md-5 offset-md-6">
-                        <div simpleCountdown [dateTo]="trimDate(lot.bid_end_time)" [language]="'en'"
-                            [endMessage]="'Auction Closed'" [styles]="
-                        '
-                        display: flex;
-                        justify-content:space-around;
-                        font-size: 15px;
-                        text-align:center;
-                        color: #FFF;
-                        background-color: black;
-                        padding: 5% 5%;
-                        font-weight: bold;
-                        min-width:50px;
-                        margin:0 2px;
-                      '
-                      "></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>Min-Estimation: </span><span>INR {{lot.min_estimate}}</span>
                     </div>
                 </div>
             </div>
+            <mat-icon style="margin: auto; margin-top: 10px; margin-bottom: 10px;">arrow_forward</mat-icon>
+            <!-- </div> -->
+
+            <div class="row p-0 mt-1">
+                <div class="col-md-5 offset-md-6">
+
+                </div>
+            </div>
+
+            <!-- </div> -->
         </div>
     </mat-card>
 </main>
